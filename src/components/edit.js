@@ -6,7 +6,14 @@ function Edit(props){
     const [businessName, setBusinessName] = useState("");
     const [businessGstNumber, setBusinessGstNumber] = useState("");
 
-    useEffect(() => {
+    useEffect(() => {        
+        async function findUserStorage(id) {
+            const usersStored = localStorage.getItem("users");
+            const users = JSON.parse(usersStored);
+            const user = users.find( user => user.id === id);
+            return user;
+        }
+
         findUserStorage(+props.match.params.id)
             .then(response => {
                 setPersonName(response.personName);
@@ -82,12 +89,4 @@ function Edit(props){
         </div>
     );
 }
-
-async function findUserStorage(id) {
-    const usersStored = localStorage.getItem("users");
-    const users = JSON.parse(usersStored);
-    const user = users.find( user => user.id === id);
-    return user;
-}
-
 export default Edit;

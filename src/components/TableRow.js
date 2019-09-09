@@ -9,6 +9,8 @@ function TableRow(props){
         if(!newUserList){
             newUserList = [];
         }
+        console.log(users);
+        console.log(newUserList);
         localStorage.setItem("users", JSON.stringify(newUserList));
     }
 

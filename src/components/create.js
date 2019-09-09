@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function Create(props){
     const [personName, setPersonName] = useState("");
@@ -14,8 +15,7 @@ function Create(props){
     function onChangeGstNumber(e){
         setBusinessGstNumber(e.target.value);
     }
-    function onsubmit(e){
-        console.log("ALGO")
+    function onsubmit(e){        
         e.preventDefault();
         const newUser = {
             personName,
@@ -31,7 +31,7 @@ function Create(props){
     function getUserStorage(){
         const usersStored = localStorage.getItem("users");
         let users = [];
-        if (usersStored !== 'undefined'){
+        if (usersStored){
             users = JSON.parse(usersStored);
         }
         return users;

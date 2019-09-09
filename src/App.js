@@ -28,7 +28,7 @@ function App() {
         </nav>
         <br />
         <h2>Welcome to React CRUD Tutorial</h2>
-        <br />
+        <br />        
         <Switch>
           <Route exact path="/create" component={Create} />
           <Route exact path="/edit/:id" component={Edit} />
@@ -37,6 +37,7 @@ function App() {
       </div>
     </Router>
   );
+
 }
 
 export default App;
