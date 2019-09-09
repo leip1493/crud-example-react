@@ -4,12 +4,20 @@ import TableRow from './TableRow';
 function Index(props){
     const [business, setBusiness] = useState([]);
 
+    useEffect(() => {
+        // const texto = "ALGO"
+        // document.title = texto;
+        // console.log(texto)
+    })
+
     useEffect( () => {
-        getBusinessStorage()
-            .then( response => {
-                setBusiness(response);
-            });
-    });
+        const fetchData = async () =>{
+            const resp = await getBusinessStorage();
+            console.log(resp)
+            setBusiness(resp);
+        }
+        fetchData();
+    }, []);
 
     const tabRow = () => {
         return business.map( (object, index) => {
@@ -40,10 +48,9 @@ function Index(props){
 async function getBusinessStorage() {
     const usersStored = localStorage.getItem("users");
     let users = [];
-    if (usersStored) {
+    if (usersStored !== 'undefined') {
         users = JSON.parse(usersStored);
     }
-    console.log(users)
     return users;
 }
 

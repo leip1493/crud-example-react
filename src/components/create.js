@@ -15,12 +15,14 @@ function Create(props){
         setBusinessGstNumber(e.target.value);
     }
     function onsubmit(e){
-        e.preventDefault(); 
+        console.log("ALGO")
+        e.preventDefault();
         const newUser = {
             personName,
             businessName,
             businessGstNumber
-        };      
+        };     
+        console.log(newUser); 
         saveUser(newUser);     
         clearInputs();
         console.log(localStorage.getItem("users"));   
@@ -29,7 +31,7 @@ function Create(props){
     function getUserStorage(){
         const usersStored = localStorage.getItem("users");
         let users = [];
-        if (usersStored){
+        if (usersStored !== 'undefined'){
             users = JSON.parse(usersStored);
         }
         return users;
@@ -40,7 +42,7 @@ function Create(props){
         newUser.id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));  
-        document.location.href = '/index';    
+        document.location = '/index';    
     }
 
     function clearInputs(){

@@ -32,7 +32,7 @@ function Edit(props){
             businessGstNumber
         };
         updateUser(+props.match.params.id, user);
-        document.location.href = '/index'; 
+        document.location = '/index'; 
     }
 
     function getUserStorage() {
